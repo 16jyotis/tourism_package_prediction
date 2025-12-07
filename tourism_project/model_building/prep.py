@@ -20,12 +20,16 @@ print("Dataset loaded successfully.")
 # Drop the unique identifier
 #df.drop(columns=['UDI'], inplace=True)
 
-# Encoding the categorical 'Type' column
+# Encoding the categorical column
+
 label_encoder = LabelEncoder()
-df['Type'] = label_encoder.fit_transform(df['Type'])
+
 cat_cols = ["TypeofContact","Occupation","Gender",
             "ProductPitched","MaritalStatus","Designation"]
-df[cat_cols] = df[cat_cols].astype("category")
+
+# Apply LabelEncoder to each categorical column
+for col in cat_cols:
+    df[col] = label_encoder.fit_transform(df[col])
 
 target_col = 'Failure'
 
