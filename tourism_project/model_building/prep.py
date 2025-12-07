@@ -31,7 +31,7 @@ cat_cols = ["TypeofContact","Occupation","Gender",
 for col in cat_cols:
     df[col] = label_encoder.fit_transform(df[col])
 
-target_col = 'Failure'
+target_col = 'ProdTaken'
 
 # Split into X (features) and y (target)
 X = df.drop(columns=[target_col])
